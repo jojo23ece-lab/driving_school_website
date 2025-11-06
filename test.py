@@ -157,9 +157,10 @@ if selected== 'blog':
          st.write('⭐')
 if selected=='mock test':
     st.title('video')
-    video_file = open(r"video.mp4", 'rb')
-    video_bytes = video_file.read()
-    st.video(video_bytes)
+    with tab3:
+    st.header("Mock Driving Test Video")
+    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
 
 
 
