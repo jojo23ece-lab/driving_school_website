@@ -157,8 +157,9 @@ if selected== 'blog':
          st.write('⭐')
 if selected=='mock test':
     st.title('video')
-    ideo_file = open(r"video.mp4", 'rb')
+    video_file = open(r"video.mp4", 'rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
+
 
 
