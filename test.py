@@ -20,7 +20,7 @@ if 'events' not in st.session_state:
 with st.sidebar:
     selected = option_menu(
         menu_title=None,
-        options=['about','location','course','calendar','blog'],
+        options=['about','location','course','calendar','blog','mock test'],
     )
 
 if selected=='about':
@@ -155,5 +155,10 @@ if selected== 'blog':
     st.write(f"Rating: {rate}/5")
     for i in range(rate):
          st.write('⭐')
+if selected=='mock test':
+    st.title('video')
+    ideo_file = open(r"video.mp4", 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes)
 
 
