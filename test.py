@@ -157,9 +157,9 @@ if selected== 'blog':
          st.write('⭐')
 if selected=='mock test':
     st.title('video')
-    with tab3:
     st.header("Mock Driving Test Video")
     st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
 
 
 
