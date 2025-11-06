@@ -154,6 +154,6 @@ if selected== 'blog':
     rate = st.slider('Rate us:', min_value=1, max_value=5)
     st.write(f"Rating: {rate}/5")
     for i in range(rate):
-        st.write('⭐')
-```
+         st.write('⭐')
+
 
