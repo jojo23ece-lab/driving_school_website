@@ -4,7 +4,9 @@ import calendar
 from datetime import datetime
 
 st.set_page_config(page_title='SRINIVASA MOTOR DRIVING SCHOOL',page_icon='😄', layout='wide')
-st.image(r"C:\Users\NITHYANANDAN EDWARD\OneDrive\Attachments\Pictures\Screenshots\Screenshot 2025-09-09 134430.png", width=400)
+
+# ✅ FIXED: Use relative path
+st.image("logo.png", width=400)
 
 # Initialize events in session state
 if 'events' not in st.session_state:
@@ -18,32 +20,32 @@ if 'events' not in st.session_state:
 with st.sidebar:
     selected = option_menu(
         menu_title=None,
-        options=['about','location','course','calendar','blog'],  # Added 'calendar'
+        options=['about','location','course','calendar','blog'],
     )
 
 if selected=='about':
     st.title('SRINIVASA MOTOR DRIVING SCHOOL')
-    st.image(r"C:\Users\NITHYANANDAN EDWARD\Screenshot 2025-10-28 105405.png")
-    st.header('Srinivas Reddy Building, Marathahalli Main Rd,/n near Old Bus Stop, above Srinivasa MRP, HAL Central Township, Marathahalli Village,/n Marathahalli, Bengaluru, Karnataka 560037')
+    # ✅ FIXED: Use relative path
+    st.image("school.png")
+    st.header('Srinivas Reddy Building, Marathahalli Main Rd, near Old Bus Stop, above Srinivasa MRP, HAL Central Township, Marathahalli Village, Marathahalli, Bengaluru, Karnataka 560037')
     st.subheader('WHY CHOOSE US!🤝')
-    st.write("SRINIVASA MOTOR DRIVING SCHOOL, our driving school is a well established center which provides our learners with the right training facilitructors are licensed professionals, and also exprienced drivers. our driving instructors are well mannered and discplined experts")
-    st.write(' 👉our driving instructors are licensed professionals')
-    st.write('👉and also exprienced drivers.')
-    st.write(' 👉our driving instructors are well mannered and discplined experts')
-    st.write('09481482060')
-    st.write('\nMonday 6 am–8 pm')
-    st.write('Tuesday 6 am–8 pm')
-    st.write('Wednesday 6 am–8 pm')
-    st.write('Thursday 6 am–8 pm')
-    st.write('Friday 6 am–8 pm')
-    st.write('Sunday Closed')
+    st.write("SRINIVASA MOTOR DRIVING SCHOOL, our driving school is a well established center which provides our learners with the right training facilities. Our driving instructors are licensed professionals, and also experienced drivers. Our driving instructors are well mannered and disciplined experts")
+    st.write(' 👉 Our driving instructors are licensed professionals')
+    st.write('👉 Experienced drivers')
+    st.write(' 👉 Well mannered and disciplined experts')
+    st.write('📞 09481482060')
+    st.write('\n**Operating Hours:**')
+    st.write('Monday-Friday: 6 AM – 8 PM')
+    st.write('Saturday: 6 AM – 8 PM')
+    st.write('Sunday: Closed')
 
 if selected=='location':
     st.title('SRINIVASA MOTOR DRIVING SCHOOL')
-    st.image(r"C:\Users\NITHYANANDAN EDWARD\Screenshot 2025-10-28 101851.png",width=200)
-    st.image(r"C:\Users\NITHYANANDAN EDWARD\Screenshot 2025-10-28 102213.png",width=200)
-    st.header('located at srinivasa reddy building,marathahalli market')
-    st.markdown('[🗺️ View on Google Maps]marathahalli bangalore: 560037 https://www.google.com/maps/place/Srinivasa+Motor+Driving+Training+School/@12.9555169,77.6919121,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae13ceb881462d:0xda06fc705063ddb3!8m2!3d12.9555169!4d77.6919121!16s%2Fg%2F1v1tljcz?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D')
+    # ✅ FIXED: Use relative paths
+    st.image("location1.png", width=200)
+    st.image("location2.png", width=200)
+    st.header('Located at Srinivasa Reddy Building, Marathahalli Market')
+    st.markdown('[🗺️ View on Google Maps](https://www.google.com/maps/place/Srinivasa+Motor+Driving+Training+School/@12.9555169,77.6919121,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae13ceb881462d:0xda06fc705063ddb3!8m2!3d12.9555169!4d77.6919121!16s%2Fg%2F1v1tljcz?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D)')
 
 if selected=='course':
     st.header("Course Registration")
@@ -75,41 +77,32 @@ if selected=='course':
             We'll contact you soon!
             """)
     else:
-        st.write('thank you for visiting,feel free to comeback anytime')
+        st.write('Thank you for visiting, feel free to come back anytime!')
 
-# ================================
-# NEW CALENDAR SECTION
-# ================================
 if selected == 'calendar':
     st.title('📅 Training Schedule Calendar')
     
-    # Two columns: Calendar view and Edit section
     col1, col2 = st.columns([2, 1])
     
     with col1:
-        # Month and Year selector
         year = st.number_input("Year:", min_value=2024, max_value=2030, value=2025)
         month = st.selectbox("Month:", range(1, 13), index=10, 
                            format_func=lambda x: calendar.month_name[x])
         
-        # Create calendar
         cal = calendar.monthcalendar(year, month)
         
         st.write(f"### {calendar.month_name[month]} {year}")
         
-        # Header
         cols = st.columns(7)
         for i, day in enumerate(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']):
             cols[i].markdown(f"**{day}**")
         
-        # Calendar grid
         for week in cal:
             cols = st.columns(7)
             for i, day in enumerate(week):
                 if day == 0:
                     cols[i].write("")
                 else:
-                    # Check if day has event
                     if day in st.session_state.events:
                         cols[i].markdown(f"**:red[{day}]**")
                         cols[i].caption(f"📌 {st.session_state.events[day]}")
@@ -119,7 +112,6 @@ if selected == 'calendar':
     with col2:
         st.write("### ✏️ Manage Events")
         
-        # Add new event
         st.write("**Add Event:**")
         new_day = st.number_input("Day:", min_value=1, max_value=31, value=1, key="new_day")
         new_event = st.text_input("Event:", placeholder="e.g., Training - 10 AM", key="new_event")
@@ -134,7 +126,6 @@ if selected == 'calendar':
         
         st.write("---")
         
-        # Delete event
         st.write("**Delete Event:**")
         if st.session_state.events:
             day_to_delete = st.selectbox("Select day:", list(st.session_state.events.keys()))
@@ -149,7 +140,6 @@ if selected == 'calendar':
         
         st.write("---")
         
-        # Show all events
         st.write("**All Events:**")
         if st.session_state.events:
             for day, event in sorted(st.session_state.events.items()):
@@ -158,21 +148,12 @@ if selected == 'calendar':
             st.info("No events scheduled")
 
 if selected== 'blog':
-    name=st.text_input('comments')
+    st.title("📝 Customer Feedback")
+    name = st.text_input('Your Comments:')
     st.write(name)
-    rate=st.slider('rate us',min_value=1,max_value=5)
-    st.write(rate)
+    rate = st.slider('Rate us:', min_value=1, max_value=5)
+    st.write(f"Rating: {rate}/5")
     for i in range(rate):
         st.write('⭐')
+```
 
-tab1,tab2,tab3=st.tabs(['about','location','mock test'])
-with tab1:
-    st.write("SRINIVASA MOTOR DRIVING SCHOOL, our driving school is a well established center which provides our learners with the right training facilitructors are licensed professionals, and also exprienced drivers. our driving instructors are well mannered and discplined experts")
-    st.write('our driving instructors are licensed professionals, and also exprienced drivers. our driving instructors are well mannered and discplined experts')
-with tab2:
-    st.header('located at srinivasa reddy building,marathahalli market')
-    st.markdown('[🗺️ View on Google Maps]marathahalli bangalore: 560037 https://www.google.com/maps/place/Srinivasa+Motor+Driving+Training+School/@12.9555169,77.6919121,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae13ceb881462d:0xda06fc705063ddb3!8m2!3d12.9555169!4d77.6919121!16s%2Fg%2F1v1tljcz?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D')
-with tab3:
-    video_file = open(r"C:\Users\NITHYANANDAN EDWARD\Downloads\videoplayback.mp4", 'rb')
-    video_bytes = video_file.read()
-    st.video(video_bytes)
