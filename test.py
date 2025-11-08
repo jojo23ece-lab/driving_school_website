@@ -156,9 +156,9 @@ if selected== 'blog':
     for i in range(rate):
          st.write('⭐')
 if selected=='mock test':
-    video_file = open(r'video.mp4')
-    video_bytes = video_file.read()
-    st.video(video_bytes)
+   with open("videos/my_video.mp4", "rb") as f:
+    video_bytes = f.read()
+   st.video(video_bytes)
 
 
 
