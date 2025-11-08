@@ -157,8 +157,9 @@ if selected== 'blog':
          st.write('⭐')
 if selected=='mock test':
     video_file = open(r'video.mp4')
-   video_bytes = video_file.read()
-   st.video(video_bytes)
+    video_bytes = video_file.read()
+    st.video(video_bytes)
+
 
 
 
