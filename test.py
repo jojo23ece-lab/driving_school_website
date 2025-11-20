@@ -66,7 +66,7 @@ if selected=='course':
         st.info(f"Selected: {vehicle_pref}")
         
         if st.button("Submit Registration", type="primary"):
-            st.balloons()
+            st.snow()
             st.success(f"""
             ✅ Thank you for registering!
             
@@ -157,6 +157,7 @@ if selected== 'blog':
          st.write('⭐')
 if selected=='mock test':
    st.video('https://youtu.be/JU0PXiLPw3U?si=R1ZwV9EP0qlhh7P_')
+
 
 
 
